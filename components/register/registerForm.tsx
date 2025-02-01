@@ -33,6 +33,7 @@ export const RegisterForm: React.FC = () => {
                withCredentials: true, // Allow cookies or session info to be sent along with the request
             }
          );
+         
    
          toast.success('Registration successful!', {
             autoClose: false,
