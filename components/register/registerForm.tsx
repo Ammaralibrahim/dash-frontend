@@ -11,9 +11,10 @@ export const RegisterForm: React.FC = () => {
    const [password, setPassword] = useState<string>('');
    const [confirmPassword, setConfirmPassword] = useState<string>('');
    const router = useRouter();
+
    const handleRegister = async () => {
       if (password !== confirmPassword) {
-         toast.error("Passwords do not match!", { autoClose: 2000 });  // Toast'in görünür kalma süresi
+         toast.error("Passwords do not match!", { autoClose: 2000 });
          return;
       }
    
@@ -27,26 +28,24 @@ export const RegisterForm: React.FC = () => {
             },
             {
                headers: {
-                  'Content-Type': 'application/json', // Specify content type for the request
-                  // 'Authorization': `Bearer ${yourAccessToken}`, // Uncomment and add the token if you have one
+                  'Content-Type': 'application/json',  // Ensure Content-Type is set to 'application/json'
                },
-               withCredentials: true, // Ensure that cookies are sent along with the request if needed
+               withCredentials: true, // Allow cookies or session info to be sent along with the request
             }
          );
    
          toast.success('Registration successful!', {
-            autoClose: false,  // Toast'in otomatik olarak kapanmasını engelliyoruz
+            autoClose: false,
          });
    
-         // Kayıt başarılı olduğunda formu sıfırlıyoruz
+         // Clear the form after successful registration
          setEmail('');
          setPassword('');
          setConfirmPassword('');
    
-         // Sayfa yönlendirmesini bir süre erteleyerek toast'in görünür kalmasını sağlıyoruz
          setTimeout(() => {
             router.push('/login');
-         }, 3000);  // 3 saniye bekleme süresi
+         }, 3000);  // Wait for 3 seconds before redirecting
    
       } catch (error: any) {
          toast.error(`Error: ${error.response?.data?.message || 'Something went wrong'}`, { autoClose: 3000 });
@@ -110,7 +109,7 @@ export const RegisterForm: React.FC = () => {
             </Text>
          </Flex>
 
-         {/* ToastContainer'ı ekliyoruz */}
+         {/* ToastContainer for notifications */}
          <ToastContainer />
       </div>
    );
