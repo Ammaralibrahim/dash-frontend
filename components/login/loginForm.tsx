@@ -13,7 +13,7 @@ export const LoginForm: React.FC = () => {
 
    const handleLogin = async () => {
       try {
-         const response = await axios.post('http://localhost:5000/login', {
+         const response = await axios.post('https://brightedu-c4379ad14cc3.herokuapp.com/login', {
             email,
             password
          });

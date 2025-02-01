@@ -19,7 +19,7 @@ export const RegisterForm: React.FC = () => {
       }
 
       try {
-         const response = await axios.post('http://localhost:5000/register', {
+         const response = await axios.post('https://brightedu-c4379ad14cc3.herokuapp.com/register', {
             email,
             password,
             confirmPassword
