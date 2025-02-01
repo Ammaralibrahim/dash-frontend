@@ -41,7 +41,7 @@ export const CompaniesDropdown = () => {
   }, []);
 
   return (
-    <Dropdown placement="bottom-right">
+    <div>
       <>
         <Box>
           <Flex align={'center'} css={{ gap: '$7' }}>
@@ -73,7 +73,7 @@ export const CompaniesDropdown = () => {
         </Box>
         {/* Burada birden fazla öğe de eklenebilir */}
       </>
-    </Dropdown>
+    </div>
   );
   
 };
