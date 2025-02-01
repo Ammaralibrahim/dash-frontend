@@ -11,39 +11,48 @@ export const RegisterForm: React.FC = () => {
    const [password, setPassword] = useState<string>('');
    const [confirmPassword, setConfirmPassword] = useState<string>('');
    const router = useRouter();
-
    const handleRegister = async () => {
       if (password !== confirmPassword) {
          toast.error("Passwords do not match!", { autoClose: 2000 });  // Toast'in görünür kalma süresi
          return;
       }
-
+   
       try {
-         const response = await axios.post('https://brightedu-c4379ad14cc3.herokuapp.com/register', {
-            email,
-            password,
-            confirmPassword
-         });
-
+         const response = await axios.post(
+            'https://brightedu-c4379ad14cc3.herokuapp.com/register', 
+            {
+               email,
+               password,
+               confirmPassword
+            },
+            {
+               headers: {
+                  'Content-Type': 'application/json', // Specify content type for the request
+                  // 'Authorization': `Bearer ${yourAccessToken}`, // Uncomment and add the token if you have one
+               },
+               withCredentials: true, // Ensure that cookies are sent along with the request if needed
+            }
+         );
+   
          toast.success('Registration successful!', {
             autoClose: false,  // Toast'in otomatik olarak kapanmasını engelliyoruz
          });
-
+   
          // Kayıt başarılı olduğunda formu sıfırlıyoruz
          setEmail('');
          setPassword('');
          setConfirmPassword('');
-
+   
          // Sayfa yönlendirmesini bir süre erteleyerek toast'in görünür kalmasını sağlıyoruz
          setTimeout(() => {
             router.push('/login');
          }, 3000);  // 3 saniye bekleme süresi
-         
+   
       } catch (error: any) {
          toast.error(`Error: ${error.response?.data?.message || 'Something went wrong'}`, { autoClose: 3000 });
       }
    };
-
+   
    return (
       <div style={{ width: '100%' }}>
          <Flex
