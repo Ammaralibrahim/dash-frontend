@@ -41,7 +41,8 @@ export const CompaniesDropdown = () => {
   }, []);
 
   return (
-    <Dropdown placement="bottom-right" borderWeight={'extrabold'}>
+    <Dropdown placement="bottom-right">
+      <>
         <Box>
           <Flex align={'center'} css={{ gap: '$7' }}>
             {company.logo}
@@ -52,11 +53,11 @@ export const CompaniesDropdown = () => {
                 weight={'medium'}
                 css={{ m: 0, color: '$accents9', lineHeight: '$lg', mb: '-$5' }}
               >
-                 {user ? (
-            <Text css={{ mt: '$5' }}>{user.email}</Text> // Kullanıcıyı buraya ekleyin
-          ) : (
-            <Text css={{ mt: '$5' }}>Not logged in</Text> // Eğer kullanıcı girişi yapılmamışsa
-          )}
+                {user ? (
+                  <Text css={{ mt: '$5' }}>{user.email}</Text> // Kullanıcıyı buraya ekleyin
+                ) : (
+                  <Text css={{ mt: '$5' }}>Not logged in</Text> // Eğer kullanıcı girişi yapılmamışsa
+                )}
               </Text>
               <Text
                 span
@@ -69,38 +70,10 @@ export const CompaniesDropdown = () => {
             </Box>
             <BottomIcon />
           </Flex>
-         
         </Box>
-      {/* <Dropdown.Menu
-        onAction={(e) => {
-          // Handle dropdown actions
-        }}
-        aria-label="Avatar Actions"
-        css={{
-          $$dropdownMenuWidth: '340px',
-          $$dropdownItemHeight: '60px',
-          '& .nextui-dropdown-item': {
-            py: '$2',
-            svg: { color: '$secondary', mr: '$4' },
-            '& .nextui-dropdown-item-content': { w: '100%', fontWeight: '$semibold' },
-          },
-        }}
-      >
-        <Dropdown.Section title="Companies">
-          <Dropdown.Item key="1" icon={<AcmeIcon />} description="San Francisco, CA">
-            Facebook
-          </Dropdown.Item>
-          <Dropdown.Item key="2" icon={<AcmeLogo />} description="Austin, TX">
-            Instagram
-          </Dropdown.Item>
-          <Dropdown.Item key="3" icon={<AcmeIcon />} description="Brooklyn, NY">
-            Twitter
-          </Dropdown.Item>
-          <Dropdown.Item key="4" icon={<AcmeIcon />} description="Palo Alto, CA">
-            Acme Co.
-          </Dropdown.Item>
-        </Dropdown.Section>
-      </Dropdown.Menu> */}
+        {/* Burada birden fazla öğe de eklenebilir */}
+      </>
     </Dropdown>
   );
+  
 };
